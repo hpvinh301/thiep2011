@@ -1,0 +1,235 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tri ân cô - 20/11</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, "Times New Roman", serif;
+  background: #243a33;
+  color: #f5ead6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+
+.card {
+  width: 100%;
+  max-width: 720px;
+  min-height: 650px;
+  padding: 45px 35px;
+  text-align: center;
+  border: 1px solid #c6a66c;
+  outline: 1px solid #c6a66c;
+  outline-offset: 7px;
+  background:
+    radial-gradient(ellipse at top, #40584a, #243a33 75%);
+  box-shadow: 0 15px 60px #101c18;
+  position: relative;
+}
+
+.date {
+  color: #d6bd91;
+  letter-spacing: 5px;
+  font-size: 13px;
+}
+
+.flower {
+  font-size: 48px;
+  margin: 30px 0 12px;
+}
+
+h1 {
+  font-size: clamp(30px, 7vw, 48px);
+  letter-spacing: 5px;
+  color: #e7d1a7;
+  margin: 15px 0;
+}
+
+.subtitle {
+  font-size: 19px;
+  letter-spacing: 2px;
+  color: #f3e9d7;
+}
+
+.line {
+  width: 90px;
+  height: 1px;
+  background: #c6a66c;
+  margin: 30px auto;
+}
+
+button {
+  border: 1px solid #d4b77f;
+  color: #f4e7ce;
+  background: transparent;
+  padding: 13px 30px;
+  letter-spacing: 3px;
+  cursor: pointer;
+  font-family: Georgia, serif;
+  transition: .3s;
+}
+
+button:hover {
+  background: #c6a66c;
+  color: #243a33;
+}
+
+.message {
+  display: none;
+  animation: appear 2s ease;
+}
+
+.message h2 {
+  color: #e7d1a7;
+  font-size: 27px;
+  line-height: 1.5;
+}
+
+.message p {
+  font-size: 17px;
+  line-height: 2;
+  color: #f0e5d3;
+  text-align: justify;
+  margin: 20px 0;
+}
+
+.signature {
+  color: #dfc18d;
+  font-style: italic;
+  font-size: 17px;
+  margin-top: 35px;
+}
+
+.music {
+  margin-top: 35px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+  color: #ddc9a4;
+}
+
+@keyframes appear {
+  from {opacity: 0; transform: translateY(20px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+@media(max-width: 480px) {
+  .card { padding: 35px 22px; }
+  .message p { font-size: 16px; }
+}
+</style>
+</head>
+
+<body>
+<div class="card">
+
+  <div class="date">20 · 11 · 2026</div>
+
+  <div class="flower">✿</div>
+
+  <div id="intro">
+    <h1>TRI ÂN CÔ</h1>
+    <div class="subtitle">Người lái đò thầm lặng</div>
+    <div class="line"></div>
+
+    <p style="font-style:italic; color:#ddc9a4">
+      Một món quà nhỏ, gửi đến cô<br>
+      với tất cả lòng biết ơn và kính trọng.
+    </p>
+
+    <br>
+    <button onclick="openCard()">MỞ THIỆP</button>
+  </div>
+
+  <div class="message" id="message">
+    <h2>KÍNH TẶNG CÔ<br>
+    NHÂN NGÀY 20/11</h2>
+
+    <div class="line"></div>
+
+    <p>
+      Có những chuyến đò đã đi qua, nhưng những
+      điều tốt đẹp mà người lái đò để lại vẫn còn
+      mãi trong ký ức của những người học trò.
+    </p>
+
+    <p>
+      Nhân ngày Nhà giáo Việt Nam 20/11, em kính
+      chúc cô luôn mạnh khỏe, bình an, hạnh phúc
+      và luôn giữ trọn niềm yêu nghề, yêu những
+      thế hệ học trò.
+    </p>
+
+    <p>
+      Dẫu thời gian có trôi qua, những bài học,
+      sự tận tâm và tình yêu thương cô dành cho
+      học trò vẫn luôn là những điều đáng quý
+      và trân trọng.
+    </p>
+
+    <p>
+      Em luôn biết ơn những điều cô đã dạy bảo
+      và những tình cảm tốt đẹp cô đã dành cho em.
+    </p>
+
+    <div class="line"></div>
+
+    <div class="signature">
+      Kính chúc cô một ngày 20/11 thật ý nghĩa!
+    </div>
+  </div>
+
+  <div class="music">
+    ♪ BÀI CA NGƯỜI GIÁO VIÊN NHÂN DÂN
+    <br><br>
+    <button id="musicButton" onclick="toggleMusic()">
+      ♫ BẬT NHẠC
+    </button>
+  </div>
+
+  <audio id="song" loop>
+    <source src="bai-ca-nguoi-giao-vien-nhan-dan.mp3"
+            type="audio/mpeg">
+  </audio>
+
+</div>
+
+<script>
+const song = document.getElementById("song");
+const musicButton = document.getElementById("musicButton");
+
+function openCard() {
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("message").style.display = "block";
+
+  song.play().then(() => {
+    musicButton.textContent = "♫ TẮT NHẠC";
+  }).catch(() => {
+    musicButton.textContent = "♫ BẬT NHẠC";
+  });
+}
+
+function toggleMusic() {
+  if (song.paused) {
+    song.play().then(() => {
+      musicButton.textContent = "♫ TẮT NHẠC";
+    }).catch(() => {
+      musicButton.textContent = "♫ BẬT NHẠC";
+    });
+  } else {
+    song.pause();
+    musicButton.textContent = "♫ BẬT NHẠC";
+  }
+}
+</script>
+</body>
+</html>
